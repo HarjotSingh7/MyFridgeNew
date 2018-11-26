@@ -1,0 +1,22 @@
+<div>
+    <div>
+        <!-- <iframe width="100%" height="300" [src]="note.url | safe"></iframe> -->
+    </div>
+    <form>
+        <div *ngIf="editTitle" class="form-group">
+            <input type="input" class="form-control" name="name" required placeholder="name" 
+            [(ngModel)]="food.name">
+        </div>
+        <h3 *ngIf="!editTitle" (click)="onTitleClick()">{{food.name}}</h3>
+        <div class="form-group">
+            <input type="input" class="form-control" name="dates" required placeholder="Timing" 
+            [(ngModel)]="food.dates">
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" rows="5" name="exp_date" [(ngModel)]="food.exp_date">
+                </textarea>
+        </div>
+        <button type="button" (click)="updateFood()" class="btn btn-primary">Update</button>
+        <button type="button" (click)="deleteFood()" class="btn btn-danger">Delete</button>
+    </form>
+</div>
