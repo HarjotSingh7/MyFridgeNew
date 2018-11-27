@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="col-sm-9">
+        <div *ngIf="!hidenewFood">
+          
+            <h2>New Food</h2>
+            <form #form="ngForm" (ngSubmit)="onSubmitAddValue(form.value)" class="well">
+                  <div class="form-group">
+                      <label>Title</label>
+                      <input type="text" class="form-control" required name="name" ngModel>
+                  </div>
+                  <div class="form-group">
+                      <label>Date</label>
+                      <input type="text" class="form-control" required name="dates" ngModel>
+                  </div>
+                  <div class="form-group">
+                      <label>Description</label>
+                      <div class="form-group">
+                            <textarea class="form-control" required rows="5" name="exp_date" ngModel>
+                                </textarea>
+                        </div>
+                  </div>
+                  <button type="submit" class="btn btn-success">Save</button>
+            </form>
+        </div>
+        <food-detail (updateFoodEvent)="onUpdateFoodEvent($event)" 
+        (deleteFoodEvent)="onDeleteFoodEvent($event)"
+         *ngIf="selectedFood && hidenewFood" 
+         [food]="selectedFood"></food-detail>
+    </div>
+    <div class="col-sm-3">
+        <button (click)="newNote()" style="margin-bottom:2px;" type="button" class="btn btn-success btn-block"> + New Food </button>
+        <food-list (SelectFood)="onSelectFood($event)" [foods]='foods'></food-list>
+    </div>
+</div>
